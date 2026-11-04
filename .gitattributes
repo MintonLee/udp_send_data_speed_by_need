@@ -1,0 +1,13 @@
+# Normalize line endings; shell scripts MUST be LF so they run on the Linux/embedded target.
+* text=auto
+
+*.sh    text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.md    text
+*.ini   text
+*.csv   text
+
+# Treat binaries as-is (never touch line endings)
+*.dat   binary
+*.bin   binary

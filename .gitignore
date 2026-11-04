@@ -1,0 +1,22 @@
+# --- Build artifacts (keep them locally, don't commit) ---
+build/
+udp_send_data_speed_by_need
+
+# --- Large capture data (keep the data/ folder, ignore big binaries) ---
+data/*.dat
+data/*.bin
+
+# --- Python cache ---
+__pycache__/
+*.pyc
+
+# --- Local scratch ---
+.screenshots/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
