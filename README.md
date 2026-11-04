@@ -10,7 +10,7 @@
 
 A **rate-controlled, high-throughput UDP sender** that streams an arbitrary binary file from a Linux host (including embedded ARM64 boards) to a receiver at a **precise, adjustable bit rate**. It chops the file into fixed-size chunks, wraps each chunk in a tiny `FS … FE` framing protocol, and paces the output so the average rate matches the configured target.
 
-> **Status:** stable at **≤ 160 Mbps** (effective payload rate). Higher rates are still under testing.
+> **Status:** tested stable at **≤ 160 Mbps** (effective payload rate). Higher rates depend on hardware and the network — setting `target_rate_mbps=1000` reached only ~800+ Mbps in practice, and **UDP packet loss occurs at high rates**. Measure the achievable speed and loss rate on your own setup.
 
 ---
 
@@ -329,7 +329,7 @@ udp_send_data_speed_by_need/
 
 | Symptom | Cause & fix |
 |---------|-------------|
-| Real rate stays below target | Kernel buffer truncated — check the startup `实际=xxx字节` line, then `sudo sysctl -w net.core.wmem_max=4194304`. Also verify the receiver is draining, and test the raw ceiling with `target_rate_mbps=0`. |
+| Real rate stays below target | Kernel buffer truncated — check the startup `实际=xxx字节` line, then `sudo sysctl -w net.core.wmem_max=4194304`. Also verify the receiver is draining, test the raw ceiling with `target_rate_mbps=0`, and keep in mind the physical ceiling depends on your hardware and network (e.g. `target_rate_mbps=1000` reached ~800+ Mbps in testing). |
 | Rate oscillates / bursty | The "fell behind → realign" branch is triggering often (CPU contention). Increase `pace_interval_ms`, or reduce competing load. |
 | Receiver drops packets | UDP has no retransmission — enlarge the receiver's `SO_RCVBUF` / `net.core.rmem_max`, lower the send rate below the link bottleneck, and confirm `失败=0` in the stats. |
 | IP fragmentation warnings | Packet > 1472 B — reduce `data_len` (e.g. 1024 or 1400). |
