@@ -297,6 +297,7 @@ python3 scripts/update_forks.py
 | Date | Forks |
 |------|-------|
 | 2026-11-05 | 0 |
+| 2026-11-06 | 0 |
 <!-- END FORK_HISTORY -->
 
 > 徽章指向 `MintonLee/udp_send_data_speed_by_need` 仓库。若在其他 owner 下 fork，请相应更新徽章 URL。Action 会通过 `GITHUB_REPOSITORY` 自动识别仓库，无需手改脚本。
