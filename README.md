@@ -316,6 +316,7 @@ python3 scripts/update_forks.py
 | 2026-11-22 | 0 |
 | 2026-11-23 | 0 |
 | 2026-11-24 | 0 |
+| 2026-11-25 | 0 |
 <!-- END FORK_HISTORY -->
 
 > The badge points at the `MintonLee/udp_send_data_speed_by_need` repo. If you fork under a different owner, update the badge URL accordingly. The action detects the repo automatically from `GITHUB_REPOSITORY`.
